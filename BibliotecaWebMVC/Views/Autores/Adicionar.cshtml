@@ -1,0 +1,31 @@
+﻿@model Autor
+@{
+    ViewData["Title"] = "Adicionar Autor";
+}
+
+<div class="text-center">
+    <h1 class="display-6 text-center">Adicionar Autor</h1>
+</div>
+
+<form asp-controller="Autores" asp-action="Adicionar" method="post">
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" asp-for="Nome" class="form-control" placeholder="Digite o nome do autor" />
+        @Html.ValidationMessageFor(x => x.Nome)
+    </div>
+
+    <div class="form-group">
+        <label for="dataNascimento">Data de Nascimento</label>
+        <input type="text" asp-for="DataNascimento" class="form-control" placeholder="Digite a data de nascimento do autor" />
+        @Html.ValidationMessageFor(x => x.DataNascimento)
+    </div>
+
+    <div class="form-group">
+        <label for="nacionalidade">Nacionalidade</label>
+        <input type="text" asp-for="Nacionalidade" class="form-control" placeholder="Digite a nacionalidade do autor" />
+        @Html.ValidationMessageFor(x => x.Nacionalidade)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Adicionar</button>
+    <a class="btn btn-secondary" asp-controller="Autores" asp-action="Listar" role="button">Voltar</a>
+</form>

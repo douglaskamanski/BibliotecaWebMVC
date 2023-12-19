@@ -1,0 +1,55 @@
+﻿@model Livro
+@{
+    ViewData["Title"] = "Adicionar Livro";
+}
+
+<div class="text-center">
+    <h1 class="display-6 text-center">Adicionar Livro</h1>
+</div>
+
+<form asp-controller="Livros" asp-action="Adicionar" method="post">
+    <div class="form-group">
+        <label for="nome">Nome</label>
+        <input type="text" asp-for="Nome" class="form-control" placeholder="Digite o nome do livro" />
+        @Html.ValidationMessageFor(x => x.Nome)
+    </div>
+
+    <div class="form-group">
+        <label for="autorId">AutorId</label>
+        <input type="text" asp-for="AutorId" class="form-control" placeholder="Digite o Id do Autor" />
+        @Html.ValidationMessageFor(x => x.AutorId)
+    </div>
+
+    <div class="form-group">
+        <label for="dataPublicacao">Data de publicação</label>
+        <input type="text" asp-for="DataPublicacao" class="form-control" placeholder="Digite a data de publicação" />
+        @Html.ValidationMessageFor(x => x.DataPublicacao)
+    </div>
+
+    <div class="form-group">
+        <label for="edicao">Edição</label>
+        <input type="text" asp-for="Edicao" class="form-control" placeholder="Digite o número de edição" />
+        @Html.ValidationMessageFor(x => x.Edicao)
+    </div>
+
+    <div class="form-group">
+        <label for="editora">Editora</label>
+        <input type="text" asp-for="Editora" class="form-control" placeholder="Digite o nome da editora" />
+        @Html.ValidationMessageFor(x => x.Editora)
+    </div>
+
+    <div class="form-group">
+        <label for="isbn">ISBN</label>
+        <input type="text" asp-for="Isbn" class="form-control" placeholder="Digite o ISBN" />
+        @Html.ValidationMessageFor(x => x.Isbn)
+    </div>
+
+    <div class="form-group">
+        <label for="idioma">Idioma</label>
+        <input type="text" asp-for="Idioma" class="form-control" placeholder="Digite o idioma" />
+        @Html.ValidationMessageFor(x => x.Idioma)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Adicionar</button>
+    <a class="btn btn-secondary" asp-controller="Livros" asp-action="Listar" role="button">Voltar</a>
+</form>

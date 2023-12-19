@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Livro>
+
+@{
+    ViewData["Title"] = "Listar de Livros";
+}
+
+<div>
+    <div>
+        <a class="btn btn-primary" role="button" asp-controller="Livros" asp-action="Adicionar">Adicionar</a>
+    </div>
+
+    @if (TempData["MensagemSucesso"] != null)
+    {
+        <div class="alert alert-success" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MensagemSucesso"]
+        </div>
+    }
+
+    @if (TempData["MensagemErro"] != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <button type="button" class="btn btn-danger btn-sm close-alert" arial-label="Close">X</button>
+            @TempData["MensagemErro"]
+        </div>
+    }
+
+    <h1 class="display-6 text-center">Lista de Livros</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Autor</th>
+                <th scope="col">Data de publicação</th>
+                <th scope="col">Edição</th>
+                <th scope="col">Editora</th>
+                <th scope="col">ISBN</th>
+                <th scope="col">Idioma</th>
+                <th scope="col" />
+            </tr>
+        </thead>
+        <tbody>
+            @if (Model != null && Model.Any())
+            {
+                foreach (Livro livro in Model)
+                {
+                    <tr>
+                        <th scope="row">@livro.Id</th>
+                        <td>@livro.Nome</td>
+                        <td>@livro.Autor.Nome</td>
+                        <td>@livro.DataPublicacao.ToShortDateString()</td>
+                        <td>@livro.Edicao</td>
+                        <td>@livro.Editora</td>
+                        <td>@livro.Isbn</td>
+                        <td>@livro.Idioma</td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a role="button" class="btn btn-primary" asp-controller="Livros" asp-action="Editar" asp-route-id="@livro.Id">Editar</a>
+                                <a role="button" class="btn btn-danger" asp-controller="Livros" asp-action="ExcluirConfirmacao" asp-route-id="@livro.Id">Excluir</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>

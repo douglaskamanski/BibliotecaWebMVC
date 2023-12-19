@@ -1,0 +1,11 @@
+﻿@model Autor
+@{
+    ViewData["Title"] = "Excluir Autor";
+}
+
+<div class="text-center">
+    <h1 class="display-6 text-center">Deseja excluir @Model.Nome ?</h1>
+</div>
+
+<a class="btn btn-danger" role="button" asp-controller="Autores" asp-action="Excluir" asp-route-id="@Model.Id">Confirmar</a>
+<a class="btn btn-secondary" role="button" asp-controller="Autores" asp-action="Listar">Voltar</a>
